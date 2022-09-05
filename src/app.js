@@ -5,7 +5,9 @@ document.getElementById("btningreso").addEventListener("click", ingreso);
 document.getElementById("btngasto").addEventListener("click", gasto);
 
 const cantidadIngreso = document.querySelector("#inpcantidadi");
+const descripcionIngreso = document.querySelector("#inpdescripcioni");
 const cantidadGasto = document.querySelector("#inpcantidadg");
+const descripcionGasto = document.querySelector("#inpdescripciong");
 
 var registros=new Array();
 var total=0;
@@ -15,6 +17,7 @@ function ingreso() {
     var nuevatransaccion = new Object();
     nuevatransaccion.monto=Number.parseInt(cantidadIngreso.value);
     nuevatransaccion.tipo='I';
+    nuevatransaccion.descripcion=descripcionGasto;
     registros.push(nuevatransaccion);
 
     totalIngreso=totalIngreso+nuevatransaccion.monto;
@@ -22,7 +25,7 @@ function ingreso() {
 
     document.getElementById("ttotal").innerHTML = "TOTAL: " + total;
     document.getElementById("tingresos").innerHTML = "TOTAL INGRESOS: " + totalIngreso;
-    //alert("Se registro un ingreso con valor de: " + nuevatransaccion.monto );
+    //alert(nuevatransaccion.descripcion=descripcionIngreso.value);
     //registros.length
 }
 function gasto() {
@@ -30,6 +33,7 @@ function gasto() {
     var nuevatransaccion = new Object();
     nuevatransaccion.monto=Number.parseInt(cantidadGasto.value);
     nuevatransaccion.tipo='G';
+    nuevatransaccion.descripcion=descripcionGasto.value;
     registros.push(nuevatransaccion);
 
     totalGasto=totalGasto+nuevatransaccion.monto;
