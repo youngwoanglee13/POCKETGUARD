@@ -8,9 +8,9 @@
 </head>
 <body>
     <tr>
-        <h2>TOTAL TRANSACCIONES</h2>
-        <h2>INGRESO</h2>
-        <h2>EGRESO</h2>
+        <h2 id="ttotal">TOTAL: 0</h2>
+        <h2 id="tingresos">TOTAL INGRESOS: 0</h2>
+        <h2 id="tgastos">TOTAL GASTOS: 0</h2>
     </tr>
     
     
@@ -25,16 +25,16 @@
         </thead>
         <tbody>
             <tr>
-                <td>Gasto</td>
-                <td><input type="number" name="inpcantidadg" id="inpcantidadg"></td>
-                <td><input type="text" name="inpdescripciong" id="inpdescripciong"></td>
-                <td><button id="btngasto">Registrar gasto</button></td>
-            </tr>
-            <tr>
                 <td>Ingreso</td>
                 <td><input type="number" name="inpcantidadi" id="inpcantidadi"></td>
                 <td><input type="text" name="inpdescripcioni" id="inpdescripcioni"></td>
                 <td><button id="btningreso">Registrar ingreso</button></td>
+            </tr>
+            <tr>
+                <td>Gasto</td>
+                <td><input type="number" name="inpcantidadg" id="inpcantidadg"></td>
+                <td><input type="text" name="inpdescripciong" id="inpdescripciong"></td>
+                <td><button id="btngasto">Registrar gasto</button></td>
             </tr>
         </tbody>
     </table>
