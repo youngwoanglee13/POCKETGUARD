@@ -14,35 +14,41 @@ var total=0;
 var totalIngreso=0;
 var totalGasto=0;
 function ingreso() { 
-    var nuevatransaccion = new Object();
-    nuevatransaccion.monto=Number.parseInt(cantidadIngreso.value);
-    nuevatransaccion.tipo='Ingreso';
-    nuevatransaccion.descripcion=descripcionIngreso.value;
-    registros.push(nuevatransaccion);
+    montoi=Number.parseInt(cantidadIngreso.value);
+    if(montoi>0 && descripcionIngreso.value.length>0){
+        var nuevatransaccion = new Object();
+        nuevatransaccion.monto=montoi;
+        nuevatransaccion.tipo='Ingreso';
+        nuevatransaccion.descripcion=descripcionIngreso.value;
+        registros.push(nuevatransaccion);
 
-    totalIngreso=totalIngreso+nuevatransaccion.monto;
-    total=totalIngreso-totalGasto;
+        totalIngreso=totalIngreso+nuevatransaccion.monto;
+        total=totalIngreso-totalGasto;
 
-    document.getElementById("ttotal").innerHTML = "TOTAL: " + total;
-    document.getElementById("tingresos").innerHTML = "TOTAL INGRESOS: " + totalIngreso;
-    actualizarTablaTransaccion();
-    //alert(nuevatransaccion.descripcion=descripcionIngreso.value);
-    //registros.length
+        document.getElementById("ttotal").innerHTML = "TOTAL: " + total;
+        document.getElementById("tingresos").innerHTML = "TOTAL INGRESOS: " + totalIngreso;
+        actualizarTablaTransaccion();
+    }else{
+        alert("Llene los campos monto y descripcion!!!");
+    }
+    
 }
 function gasto() {
-    var nuevatransaccion = new Object();
-    nuevatransaccion.monto=Number.parseInt(cantidadGasto.value);
-    nuevatransaccion.tipo='Gasto';
-    nuevatransaccion.descripcion=descripcionGasto.value;
-    registros.push(nuevatransaccion);
-
-    totalGasto=totalGasto+nuevatransaccion.monto;
-    total=totalIngreso-totalGasto;
-
-    document.getElementById("ttotal").innerHTML = "TOTAL: " + total;
-    document.getElementById("tgastos").innerHTML = "TOTAL INGRESOS: " + totalGasto;
-    actualizarTablaTransaccion();
+    montog=Number.parseInt(cantidadGasto.value);
+    if(montog>0 && descripcionGasto.value.length>0){
+        var nuevatransaccion = new Object();
+        nuevatransaccion.monto=montog;
+        nuevatransaccion.tipo='Gasto';
+        nuevatransaccion.descripcion=descripcionGasto.value;
+        registros.push(nuevatransaccion);
     
+        totalGasto=totalGasto+nuevatransaccion.monto;
+        total=totalIngreso-totalGasto;
+    
+        document.getElementById("ttotal").innerHTML = "TOTAL: " + total;
+        document.getElementById("tgastos").innerHTML = "TOTAL INGRESOS: " + totalGasto;
+        actualizarTablaTransaccion();
+    }else{alert("Llene los campos monto y descripcion!!!")}
 }
 function actualizarTablaTransaccion(){
     var textTransacciones="";
