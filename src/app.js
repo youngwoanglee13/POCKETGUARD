@@ -16,8 +16,8 @@ var totalGasto=0;
 function ingreso() { 
     var nuevatransaccion = new Object();
     nuevatransaccion.monto=Number.parseInt(cantidadIngreso.value);
-    nuevatransaccion.tipo='I';
-    nuevatransaccion.descripcion=descripcionGasto;
+    nuevatransaccion.tipo='Ingreso';
+    nuevatransaccion.descripcion=descripcionIngreso.value;
     registros.push(nuevatransaccion);
 
     totalIngreso=totalIngreso+nuevatransaccion.monto;
@@ -25,14 +25,14 @@ function ingreso() {
 
     document.getElementById("ttotal").innerHTML = "TOTAL: " + total;
     document.getElementById("tingresos").innerHTML = "TOTAL INGRESOS: " + totalIngreso;
+    actualizarTablaTransaccion();
     //alert(nuevatransaccion.descripcion=descripcionIngreso.value);
     //registros.length
 }
 function gasto() {
-   
     var nuevatransaccion = new Object();
     nuevatransaccion.monto=Number.parseInt(cantidadGasto.value);
-    nuevatransaccion.tipo='G';
+    nuevatransaccion.tipo='Gasto';
     nuevatransaccion.descripcion=descripcionGasto.value;
     registros.push(nuevatransaccion);
 
@@ -41,5 +41,17 @@ function gasto() {
 
     document.getElementById("ttotal").innerHTML = "TOTAL: " + total;
     document.getElementById("tgastos").innerHTML = "TOTAL INGRESOS: " + totalGasto;
+    actualizarTablaTransaccion();
     
+}
+function actualizarTablaTransaccion(){
+    var textTransacciones="";
+    for (var i = 0; i < registros.length; i++) {
+        var textorow="<tr>";
+        textorow=textorow+"<td>"+registros[i].tipo+"</td><td>"+registros[i].descripcion+"</td><td>"+registros[i].monto+"</td>";     
+        var textorow=textorow+"</tr>";
+        textTransacciones=textTransacciones+textorow;
+    }
+
+    document.getElementById("transacciones").innerHTML = textTransacciones;
 }
